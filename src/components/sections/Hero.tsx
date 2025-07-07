@@ -17,9 +17,8 @@ export default function Hero() {
     <section>
       <div className="mb-8">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight">
-          Judith
-          <br />
-          Maglodji
+          <span className="text-black">Sitso</span>{" "}
+          <span className="text-red-500 font-normal">/si-tcho/</span>
         </h1>
       </div>
       <div className="flex flex-wrap gap-6 items-center mb-12">

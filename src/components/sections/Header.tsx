@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
+import Image from "next/image";
 
 export default function Header() {
   const [scrollY, setScrollY] = useState(0);
@@ -43,8 +44,14 @@ export default function Header() {
             }`}
           >
             {/* Profile Image */}
-            <div className="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center overflow-hidden">
-              
+            <div className="w-16 h-16 rounded-full flex items-center justify-center overflow-hidden">
+              <Image
+                src={`/images/CS5.jpg`}
+                alt="Profile"
+                width={64}
+                height={64}
+                className="object-cover rounded-full"
+              />
             </div>
             {/* About me/Home link and theme toggle */}
             <div className="flex items-center gap-2">

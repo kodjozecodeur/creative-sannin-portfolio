@@ -64,26 +64,27 @@ export const projects = [
     cta: "Take A look",
     link: "https://www.vtccontrol.com/",
   },
-  // {
-  //   id: 4,
-  //   title: "Sonic Music",
-  //   description: "Listen and share the music you love.",
-  //   preview:
-  //     "Rooted in a deep passion for music, our app celebrates the boundless power of sound to inspir...",
-  //   tags: ["Mobile App", "Website", "Case Study"],
-  //   imgSrc: ["/images/SNB1.jpg", "/images/SNB2.jpg", "/images/SNB3.jpg"],
-  //   cta: "Take A look",
-  // },
-  // {
-  //   id: 5,
-  //   title: "zero: Community for gamers.",
-  //   description: "Stream & Build your community.",
-  //   preview:
-  //     "Zero was created to assist Gamers looking to connect with other gamers; our emphasis is on cre...",
-  //   tags: ["Mobile App", "Case Study"],
-  //   imgSrc: ["/images/SNB1.jpg", "/images/SNB2.jpg", "/images/SNB3.jpg"],
-  //   cta: "Take A look",
-  // },
+  {
+    id: 4,
+    title: "QuizzMe",
+    description: "A Gaming and Quizzing App.",
+    preview:
+      "QuizzMe is a mobile app designed to enhance the gaming experience by allowing users to create and share quizzes, compete with friends, and discover new games.",
+    tags: ["Mobile App", "Game", "Quizz"],
+    imgSrc: ["/images/G1.jpg", "/images/G2.jpg", "/images/G3.jpg"],
+    cta: "Take A look",
+    link: "https://www.behance.net/yayradesigner",
+  },
+  {
+    id: 5,
+    title: "Neptune Bank Management System",
+    description: "A Management and  Pos Application.",
+    preview:
+      "Neptune Bank Management System is a comprehensive banking application designed to streamline operations, enhance customer experience, and provide secure financial services.",
+    tags: ["Mobile App", "Fintech"],
+    imgSrc: ["/images/N1.jpg", "/images/N2.jpg", "/images/N2.jpg"],
+    cta: "Take A look",
+  },
 ];
 
 export const experience = [
