@@ -15,7 +15,7 @@ type Project = {
   tags: string[];
   imgSrc: string[];
   cta: string;
-  link: string;
+  link?: string;
 };
 
 type Experience = {
@@ -73,13 +73,13 @@ function ProjectCard({ project }: { project: Project }) {
 
   return (
     <motion.div
-      className="max-w-4xl mx-auto p-6 font-sans transition-all duration-500"
+      className="max-w-4xl w-full mx-auto p-4 sm:p-6 font-sans transition-all duration-500"
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: project.id * 0.1 }}
+      transition={{ duration: 0.6 }}
     >
       {/* Header Section */}
-      <div className="flex items-start gap-5 mb-10">
+      <div className="flex flex-col sm:flex-row items-start gap-5 mb-8 sm:mb-10">
         {/* Removed project initial avatar */}
         <div className="flex-1">
           <div className="flex items-center gap-4 mb-2">
@@ -93,7 +93,7 @@ function ProjectCard({ project }: { project: Project }) {
       </div>
 
       {/* Preview Section */}
-      <div className="mb-10">
+      <div className="mb-8 sm:mb-10">
         <h2 className="text-xl font-semibold text-black mb-4">Description</h2>
         <p className="text-gray-600 text-base mb-2">
           {showFullPreview || project.preview.length <= 80
@@ -111,29 +111,29 @@ function ProjectCard({ project }: { project: Project }) {
       </div>
 
       {/* Carousel Container */}
-      <div className="mb-10">
-        <div className="relative w-full h-96 overflow-hidden">
+      <div className="mb-8 sm:mb-10">
+        <div className="relative w-full h-48 sm:h-72 md:h-96 overflow-hidden">
           <div
-            className="flex transition-transform duration-500 ease-in-out h-full px-4"
+            className="flex transition-transform duration-500 ease-in-out h-full px-2 sm:px-4"
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
           >
             {slides.length > 0 ? (
               slides.map((img, idx) => (
                 <div
                   key={idx}
-                  className="min-w-full h-full px-4 flex items-center justify-center"
+                  className="min-w-full h-full px-2 sm:px-4 flex items-center justify-center"
                 >
                   <Image
                     src={img}
                     alt={`${project.title} screenshot ${idx + 1}`}
                     width={800}
                     height={600}
-                    className="object-contain w-full h-full rounded-xl shadow-md bg-gray-100"
+                    className="object-contain w-full h-full max-h-44 sm:max-h-72 md:max-h-96 rounded-xl shadow-md bg-gray-100"
                   />
                 </div>
               ))
             ) : (
-              <div className="min-w-full h-full px-4 flex items-center justify-center bg-gray-200 text-gray-600 font-medium text-lg">
+              <div className="min-w-full h-full px-2 sm:px-4 flex items-center justify-center bg-gray-200 text-gray-600 font-medium text-base sm:text-lg">
                 No images available
               </div>
             )}
@@ -142,8 +142,8 @@ function ProjectCard({ project }: { project: Project }) {
       </div>
 
       {/* Footer with Tags and CTA */}
-      <div className="flex justify-between items-center">
-        <div className="flex flex-wrap gap-2">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div className="flex flex-wrap gap-2 mb-2 sm:mb-0">
           {project.tags.slice(0, 3).map((tag, index) => (
             <span
               key={index}
@@ -153,7 +153,7 @@ function ProjectCard({ project }: { project: Project }) {
             </span>
           ))}
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           <a
             href={project.link}
             target="_blank"
@@ -194,7 +194,7 @@ function ItemCard({
       className="group border border-gray-100 rounded-2xl p-8 hover:shadow-lg transition-all duration-300 bg-white hover:border-gray-200"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: item.id * 0.1 }}
+      transition={{ duration: 0.4 }}
       whileHover={{ y: -4 }}
     >
       <div className="flex justify-between items-start mb-6">
@@ -270,10 +270,10 @@ function ItemCard({
 
 export default function Projects() {
   return (
-    <section className="py-20 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-12 sm:py-20 px-2 sm:px-6">
+      <div className="max-w-7xl w-full mx-auto">
         <Tabs defaultValue="projects" className="w-full">
-          <TabsList className="grid w-full max-w-lg grid-cols-3 mb-16 bg-transparent p-0 h-auto mx-auto">
+          <TabsList className="grid w-full max-w-xs sm:max-w-lg grid-cols-3 mb-8 sm:mb-16 bg-transparent p-0 h-auto mx-auto">
             <TabsTrigger
               value="projects"
               className="text-base data-[state=active]:text-black data-[state=active]:font-semibold data-[state=active]:border-b-2 data-[state=active]:border-black data-[state=active]:bg-transparent data-[state=inactive]:text-gray-400 pb-3 rounded-none data-[state=active]:shadow-none transition-all duration-300"
@@ -296,7 +296,7 @@ export default function Projects() {
 
           <TabsContent value="projects" className="mt-0">
             <motion.div
-              className="max-w-4xl mx-auto space-y-12"
+              className="max-w-4xl w-full mx-auto space-y-8 sm:space-y-12"
               initial="hidden"
               animate="visible"
               exit="exit"
@@ -310,7 +310,7 @@ export default function Projects() {
 
           <TabsContent value="experience" className="mt-0">
             <motion.div
-              className="max-w-4xl mx-auto space-y-12"
+              className="max-w-4xl w-full mx-auto space-y-8 sm:space-y-12"
               initial="hidden"
               animate="visible"
               exit="exit"
@@ -324,7 +324,7 @@ export default function Projects() {
 
           <TabsContent value="education" className="mt-0">
             <motion.div
-              className="max-w-4xl mx-auto space-y-12"
+              className="max-w-4xl w-full mx-auto space-y-8 sm:space-y-12"
               initial="hidden"
               animate="visible"
               exit="exit"

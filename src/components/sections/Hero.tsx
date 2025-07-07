@@ -15,9 +15,9 @@ export default function Hero() {
     "https://drive.google.com/file/d/1SkP1eBwCUnrLmXRZC0je0QEMQS4ZwvJG/view?usp=drive_link";
   return (
     <section>
-      <div className="mb-8">
+      <div className="mb-8 mt-8">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight">
-          <span className="text-black">Sitso</span>{" "}
+          <span className="text-black">Sitso</span>{" "} <br />
           <span className="text-red-500 font-normal">/si-tcho/</span>
         </h1>
       </div>

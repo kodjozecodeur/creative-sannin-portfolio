@@ -27,7 +27,7 @@ const polaroidImages = [
 const PolaroidPhotos = () => (
   <div className="relative">
     <div className="space-y-8">
-      {polaroidImages.map((img, idx) => (
+      {polaroidImages.map((img) => (
         <div className={img.className} key={img.src}>
           <div className="bg-white p-4 shadow-xl max-w-xs">
             <Image
