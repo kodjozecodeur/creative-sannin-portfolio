@@ -1,5 +1,5 @@
 "use client";
-import { texts } from "@/assets";
+import React from "react";
 import {
   ChevronDownCircleIcon,
   ChevronRight,
@@ -11,76 +11,53 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function Hero() {
+  const RESUME_LINK =
+    "https://drive.google.com/file/d/1SkP1eBwCUnrLmXRZC0je0QEMQS4ZwvJG/view?usp=drive_link";
   return (
     <section>
-      {/* Role Tags */}
-      <div className="flex flex-wrap gap-6 mb-8 mt-8">
-        {texts.header.roleTags.map((role, index) => (
-          <span key={index} className="text-gray-600 text-sm">
-            {role}
-          </span>
-        ))}
-      </div>
-      {/* Main Name */}
       <div className="mb-8">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight">
-          {texts.hero.title.firstName}
+          Judith
           <br />
-          {texts.hero.title.lastName}
+          Maglodji
         </h1>
       </div>
-      {/* Contact Actions */}
       <div className="flex flex-wrap gap-6 items-center mb-12">
         <motion.span
           className="text-[#19170E] text-sm bg-[#F2F1EC] px-2 py-2 rounded-full cursor-pointer"
-          whileHover={{
-            scale: 1.05,
-            backgroundColor: "#EDEAE1",
-          }}
+          whileHover={{ scale: 1.05, backgroundColor: "#EDEAE1" }}
           whileTap={{ scale: 0.98 }}
-          transition={{
-            type: "spring",
-            stiffness: 400,
-            damping: 25,
-          }}
+          transition={{ type: "spring", stiffness: 400, damping: 25 }}
         >
           <MailIcon className="inline-block mr-2" size={23} />
-          {texts.hero.email}
+          judith.maglodji@gmail.com
         </motion.span>
-
-        <motion.span
-          className="text-[#19170E] text-sm bg-[#F2F1EC] px-2 py-2 rounded-full cursor-pointer"
-          whileHover={{
-            scale: 1.05,
-            backgroundColor: "#EDEAE1",
-          }}
+        <motion.a
+          href={RESUME_LINK}
+          className="text-[#19170E] text-sm bg-[#F2F1EC] px-2 py-2 rounded-full cursor-pointer flex items-center gap-2"
+          whileHover={{ scale: 1.05, backgroundColor: "#EDEAE1" }}
           whileTap={{ scale: 0.98 }}
-          transition={{
-            type: "spring",
-            stiffness: 400,
-            damping: 25,
-          }}
+          transition={{ type: "spring", stiffness: 400, damping: 25 }}
         >
-          <ChevronDownCircleIcon className="inline-block mr-2" size={23} />
+          <ChevronDownCircleIcon className="inline-block" size={23} />
           Download CV
-        </motion.span>
+        </motion.a>
       </div>
-      {/* Bio Text */}
       <div className="mb-12 max-w-2xl">
         <p className="text-gray-700 text-sm leading-relaxed">
-          {texts.hero.bio}
+          I am a creative designer and developer passionate about building
+          beautiful and functional digital experiences.
         </p>
-      </div>{" "}
-      {/* social media links */}
+      </div>
+      {/* Social media links (example, replace with translation keys as needed) */}
       <div className="flex gap-4 items-center mb-8">
-        {/* X (Twitter) */}
         <motion.div
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           transition={{ type: "spring", stiffness: 400, damping: 25 }}
         >
           <Link
-            href="https://twitter.com/yourusername"
+            href="https://x.com/davisitso?s=21&t=oNXmxEUoVA_1VB7-Hn7XCg"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-gray-600 hover:text-black transition-colors text-sm group"
@@ -95,15 +72,13 @@ export default function Hero() {
             <ChevronRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
           </Link>
         </motion.div>
-
-        {/* LinkedIn */}
         <motion.div
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           transition={{ type: "spring", stiffness: 400, damping: 25 }}
         >
           <Link
-            href="https://linkedin.com/in/yourusername"
+            href="http://www.linkedin.com/in/judith-maglodji-6b7408275"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-gray-600 hover:text-black transition-colors text-sm group"
@@ -118,15 +93,13 @@ export default function Hero() {
             <ChevronRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
           </Link>
         </motion.div>
-
-        {/*Behance */}
         <motion.div
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           transition={{ type: "spring", stiffness: 400, damping: 25 }}
         >
           <Link
-            href="https://behance.net/yourusername"
+            href="https://www.behance.net/yayradesigner"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-gray-600 hover:text-black transition-colors text-sm group"

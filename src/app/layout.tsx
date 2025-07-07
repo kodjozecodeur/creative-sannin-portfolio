@@ -24,14 +24,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="bg-white dark:bg-[#18181b]">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-[#18181b] text-black dark:text-gray-100`}
       >
-        <Header />
-        <div className="min-h-screen bg-white">
-          <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 pt-24">
-            {children}
+        {/* LanguagePopup must be rendered in a Client Component, so move it to a client layout or page */}
+        <div>
+          <Header />
+          <div className="min-h-screen">
+            <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 pt-24">
+              {children}
+            </div>
           </div>
         </div>
       </body>

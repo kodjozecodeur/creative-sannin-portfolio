@@ -1,3 +1,62 @@
+/* --- Dark mode styles --- */
+html.dark {
+  background: #18181b;
+  color: #f3f4f6;
+}
+body.dark {
+  background: #18181b;
+  color: #f3f4f6;
+}
+
+/* Header dark mode */
+.dark .bg-white\/80 {
+  background-color: rgba(24, 24, 27, 0.8) !important;
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #27272a !important;
+}
+.dark .text-gray-600 {
+  color: #d1d5db !important;
+}
+.dark .hover\:text-gray-900:hover {
+  color: #fff !important;
+}
+.dark .bg-gray-800 {
+  background-color: #27272a !important;
+}
+.dark .bg-gray-600 {
+  background-color: #52525b !important;
+}
+
+/* Loader dark mode */
+.dark .bg-white\/80 {
+  background-color: rgba(24, 24, 27, 0.8) !important;
+}
+.dark .text-blue-500 {
+  color: #60a5fa !important;
+}
+.dark .border-blue-400 {
+  border-color: #60a5fa !important;
+}
+
+/* General dark mode tweaks for sections */
+.dark .bg-gray-50 {
+  background-color: #18181b !important;
+}
+.dark .text-black {
+  color: #f3f4f6 !important;
+}
+.dark .text-gray-700 {
+  color: #d1d5db !important;
+}
+.dark .text-gray-900 {
+  color: #fff !important;
+}
+.dark .bg-white {
+  background-color: #232326 !important;
+}
+.dark .shadow-lg {
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.7) !important;
+}
 /* Centered main layout for the whole website */
 .centered-main {
   max-width: 1024px;

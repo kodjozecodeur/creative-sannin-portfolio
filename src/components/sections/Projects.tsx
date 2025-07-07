@@ -3,28 +3,26 @@
 import { motion, Variants } from "framer-motion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { projects, experience, education } from "@/assets";
-import { useState, useRef } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 // Define types for our data
 type Project = {
   id: number;
   title: string;
-  date: string;
   description: string;
   preview: string;
   tags: string[];
-  imgSrc: string;
+  imgSrc: string[];
   cta: string;
+  link: string;
 };
 
 type Experience = {
   id: number;
   company: string;
   position: string;
-  duration: string;
-  description: string;
-  preview: string;
+  description: string[];
   tags: string[];
 };
 
@@ -33,9 +31,9 @@ type Education = {
   institution: string;
   degree: string;
   field: string;
-  duration: string;
-  description: string;
-  preview: string;
+  duration?: string;
+  description?: string;
+  preview?: string;
   tags: string[];
 };
 
@@ -54,161 +52,99 @@ const tabContentVariants: Variants = {
   },
 };
 
-// Project card component with horizontal slider
+// Project component with desktop and mobile mockups
 function ProjectCard({ project }: { project: Project }) {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const sliderRef = useRef<HTMLDivElement>(null);
+  const [showFullPreview, setShowFullPreview] = useState(false);
 
-  // Create 3 different views for each project
-  const slides = [
-    { id: 1, image: project.imgSrc, title: `${project.title} - Overview` },
-    { id: 2, image: project.imgSrc, title: `${project.title} - Details` },
-    { id: 3, image: project.imgSrc, title: `${project.title} - Process` },
-  ];
+  // Use project images for the carousel
+  const slides = project.imgSrc || [];
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
+  // Auto-rotate slides
+  useEffect(() => {
+    if (slides.length === 0) return;
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [slides.length]);
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
-
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index);
-  };
+  // Removed getProjectInitial, no longer needed
 
   return (
     <motion.div
-      className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-gray-200"
+      className="max-w-4xl mx-auto p-6 font-sans transition-all duration-500"
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: project.id * 0.1 }}
-      whileHover={{ y: -8 }}
     >
-      {/* Header with Icon and Date */}
-      <div className="absolute top-6 left-6 z-10 flex items-center gap-3">
-        <div className="w-12 h-12 bg-gray-900 rounded-xl flex items-center justify-center">
-          <svg
-            className="w-6 h-6 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
-            />
-          </svg>
-        </div>
-        <div>
-          <h3 className="text-lg font-semibold text-gray-900">
-            {project.title}
-          </h3>
-          <p className="text-sm text-gray-500">{project.date}</p>
+      {/* Header Section */}
+      <div className="flex items-start gap-5 mb-10">
+        {/* Removed project initial avatar */}
+        <div className="flex-1">
+          <div className="flex items-center gap-4 mb-2">
+            <h1 className="text-3xl font-bold text-black">{project.title}</h1>
+            {/* <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded">
+              {project.date}
+            </span> */}
+          </div>
+          <p className="text-gray-600 text-base">{project.description}</p>
         </div>
       </div>
 
-      {/* CTA Button */}
-      <div className="absolute top-6 right-6 z-10">
-        <button className="bg-gray-900 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors shadow-lg">
-          {project.cta}
-        </button>
-      </div>
-
-      {/* Image Slider */}
-      <div className="relative h-96 overflow-hidden">
-        <div
-          ref={sliderRef}
-          className="flex transition-transform duration-700 ease-out h-full"
-          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-        >
-          {slides.map((slide) => (
-            <div key={slide.id} className="min-w-full h-full relative">
-              <Image
-                src={slide.image}
-                alt={slide.title}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              />
-              {/* Subtle gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-            </div>
-          ))}
-        </div>
-
-        {/* Navigation Arrows */}
-        <button
-          onClick={prevSlide}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-all hover:scale-110 shadow-lg"
-        >
-          <svg
-            className="w-5 h-5 text-gray-800"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+      {/* Preview Section */}
+      <div className="mb-10">
+        <h2 className="text-xl font-semibold text-black mb-4">Description</h2>
+        <p className="text-gray-600 text-base mb-2">
+          {showFullPreview || project.preview.length <= 80
+            ? project.preview
+            : `${project.preview.substring(0, 80)}...`}
+        </p>
+        {project.preview.length > 80 && (
+          <button
+            className="text-black underline text-sm hover:no-underline transition-all focus:outline-none"
+            onClick={() => setShowFullPreview((prev) => !prev)}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-        </button>
-        <button
-          onClick={nextSlide}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-all hover:scale-110 shadow-lg"
-        >
-          <svg
-            className="w-5 h-5 text-gray-800"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-        </button>
-
-        {/* Slide Indicators */}
-        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2">
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={`w-2 h-2 rounded-full transition-all ${
-                index === currentSlide
-                  ? "bg-white w-8"
-                  : "bg-white/60 hover:bg-white/80"
-              }`}
-            />
-          ))}
-        </div>
-      </div>
-
-      {/* Card Content */}
-      <div className="p-8">
-        <div className="mb-6">
-          <h4 className="text-xl font-semibold text-gray-900 mb-3">Preview</h4>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            {project.preview}
-          </p>
-          <button className="text-gray-900 text-sm font-medium hover:underline">
-            read more
+            {showFullPreview ? "show less" : "read more"}
           </button>
-        </div>
+        )}
+      </div>
 
-        {/* Tags */}
-        <div className="flex flex-wrap gap-2 pt-4 border-t border-gray-100">
-          {project.tags.map((tag, index) => (
+      {/* Carousel Container */}
+      <div className="mb-10">
+        <div className="relative w-full h-96 overflow-hidden">
+          <div
+            className="flex transition-transform duration-500 ease-in-out h-full px-4"
+            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          >
+            {slides.length > 0 ? (
+              slides.map((img, idx) => (
+                <div
+                  key={idx}
+                  className="min-w-full h-full px-4 flex items-center justify-center"
+                >
+                  <Image
+                    src={img}
+                    alt={`${project.title} screenshot ${idx + 1}`}
+                    width={800}
+                    height={600}
+                    className="object-contain w-full h-full rounded-xl shadow-md bg-gray-100"
+                  />
+                </div>
+              ))
+            ) : (
+              <div className="min-w-full h-full px-4 flex items-center justify-center bg-gray-200 text-gray-600 font-medium text-lg">
+                No images available
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Footer with Tags and CTA */}
+      <div className="flex justify-between items-center">
+        <div className="flex flex-wrap gap-2">
+          {project.tags.slice(0, 3).map((tag, index) => (
             <span
               key={index}
               className="px-3 py-1 bg-gray-50 text-gray-700 text-xs rounded-full font-medium hover:bg-gray-100 transition-colors"
@@ -216,6 +152,16 @@ function ProjectCard({ project }: { project: Project }) {
               {tag}
             </span>
           ))}
+        </div>
+        <div className="flex items-center gap-4">
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-gray-900 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors shadow-lg"
+          >
+            {project.cta}
+          </a>
         </div>
       </div>
     </motion.div>
@@ -276,35 +222,35 @@ function ItemCard({
                 : (item as Education).institution}
             </h3>
             <p className="text-gray-500 text-sm">
-              {type === "project"
-                ? (item as Project).date
-                : type === "experience"
-                ? `${(item as Experience).position} • ${
-                    (item as Experience).duration
-                  }`
-                : `${(item as Education).degree} in ${
+              {type === "experience"
+                ? (item as Experience).position
+                : type === "education"
+                ? `${(item as Education).degree} in ${
                     (item as Education).field
-                  } • ${(item as Education).duration}`}
+                  } • ${(item as Education).duration}`
+                : null}
             </p>
           </div>
         </div>
-        <button className="bg-gray-900 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-800 transition-all hover:scale-105 shadow-sm">
-          {type === "project"
-            ? (item as Project).cta
-            : type === "experience"
-            ? "View details"
-            : "View certificate"}
-        </button>
+        {type === "project" && (
+          <button className="bg-gray-900 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-800 transition-all hover:scale-105 shadow-sm">
+            {(item as Project).cta}
+          </button>
+        )}
       </div>
 
-      <div className="mb-6">
-        <h4 className="text-lg font-semibold text-gray-900 mb-3">
-          {type === "education" ? "Description" : "Preview"}
-        </h4>
-        <p className="text-gray-600 leading-relaxed">
-          {item.preview || item.description}
-        </p>
-      </div>
+      {type === "experience" && (
+        <div className="mb-6">
+          <h4 className="text-lg font-semibold text-gray-900 mb-3">
+            Key Contributions
+          </h4>
+          <ul className="list-disc pl-5 space-y-1 text-gray-600">
+            {(item as Experience).description.map((point, idx) => (
+              <li key={idx}>{point}</li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {item.tags && (
         <div className="flex flex-wrap gap-2 pt-4 border-t border-gray-100">
