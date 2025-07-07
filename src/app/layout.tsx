@@ -15,7 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Creative Sannin Portfolio",
-  description: "Showcasing creativity, innovation, and technology. Portfolio, Design, Application, Tech ",
+  description:
+    "Showcasing creativity, innovation, and technology. Portfolio, Design, Application, Tech ",
 };
 
 export default function RootLayout({
@@ -28,7 +29,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-[#18181b] text-black dark:text-gray-100`}
       >
-        {/* LanguagePopup must be rendered in a Client Component, so move it to a client layout or page */}
+        {/* LanguagePopup removed */}
         <div>
           <Header />
           <div className="min-h-screen">

@@ -1,5 +1,5 @@
 "use client";
-import LanguagePopup from "@/components/LanguagePopup";
+// import LanguagePopup from "@/components/LanguagePopup";
 import Loader from "@/components/Loader";
 import { useEffect, useState } from "react";
 
@@ -16,7 +16,7 @@ export default function ClientLayout({
   return (
     <>
       {loading && <Loader />}
-      <LanguagePopup />
+      {/* <LanguagePopup /> */}
       {!loading && children}
     </>
   );
