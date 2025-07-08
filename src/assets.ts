@@ -112,7 +112,7 @@ export const experience = [
   {
     id: 3,
     company: "EdoMatch| Lomé-TOGO",
-    position: "Founder & Design Lead",
+    position: "Product Designer",
     description: [
       "Designed a recruitment application from scratch called Edomatch, creating an intuitive end-to-end experience for job seekers and recruiters.",
       "Built a clear and efficient user flow aimed at simplifying and modernizing the traditional hiring process across Africa and beyond.",
@@ -128,20 +128,20 @@ export const education = [
     institution: "JAM INFO",
     degree: "Bachelor of Design",
     field: "Graphic Design Traininf",
-    tags: ["Design Theory", "User Research", "Digital Design"],
+    tags: ["Graphic Design", "Branding", "Visual Communication"],
   },
   {
     id: 2,
     institution: "Africa Agility",
     degree: "Online Training",
     field: "Product Design",
-    tags: ["Communication", "Presentation", "Design Thinking"],
+    tags: ["Product Design", "UX/UI Design", "Prototyping"],
   },
   {
     id: 3,
     institution: "HerTechTrail",
     degree: "Online Training",
     field: "Product Design",
-    tags: ["User Research", "Analytics", "Testing"],
+    tags: ["UI/UX Design", "Prototyping", "User Testing"],
   },
 ];
