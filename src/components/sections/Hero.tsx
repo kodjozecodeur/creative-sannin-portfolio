@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { texts } from "@/assets";
 
 export default function Hero() {
   const RESUME_LINK =
@@ -17,7 +18,7 @@ export default function Hero() {
     <section>
       <div className="mb-8 mt-8">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight">
-          <span className="text-black">Sitso</span>{" "} <br />
+          <span className="text-black">Sitso</span> <br />
           <span className="text-red-500 font-normal">/si-tcho/</span>
         </h1>
       </div>
@@ -29,7 +30,7 @@ export default function Hero() {
           transition={{ type: "spring", stiffness: 400, damping: 25 }}
         >
           <MailIcon className="inline-block mr-2" size={23} />
-          judith.maglodji@gmail.com
+          {texts.hero.email}
         </motion.span>
         <motion.a
           href={RESUME_LINK}

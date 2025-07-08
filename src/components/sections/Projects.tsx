@@ -31,7 +31,7 @@ type Education = {
   institution: string;
   degree: string;
   field: string;
-  duration?: string;
+  // duration?: string;
   description?: string;
   preview?: string;
   tags: string[];
@@ -227,7 +227,7 @@ function ItemCard({
                 : type === "education"
                 ? `${(item as Education).degree} in ${
                     (item as Education).field
-                  } • ${(item as Education).duration}`
+                  }`
                 : null}
             </p>
           </div>

@@ -56,7 +56,7 @@ export const projects = [
   {
     id: 3,
     title: "VTCControl",
-    description: "Fleet Management App.",
+    description: "Fleet Management App",
     preview:
       "VTC Control is a fleet management app designed for VTC (ride-sharing service) owners to monitor their vehicles and drivers through detailed dashboards to optimize their business operations.",
     tags: ["App", "Fleet Management", "IOS", "Android"],
@@ -104,7 +104,7 @@ export const experience = [
     company: "Neptune Microfinance Bank Ltd | Ikeja, Lagos",
     position: "Product Designer",
     description: [
-      "•Designed functional tools for the bank, including TMS (Terminal Management System), POS interfaces, and Bill Collector platforms used daily by a wide network of merchants.",
+      "Designed functional tools for the bank, including TMS (Terminal Management System), POS interfaces, and Bill Collector platforms used daily by a wide network of merchants.",
       "Ensured secure, seamless transactions for Nigerian businesses, while making the design system scalable to support future product evolution and changes.",
     ],
     tags: ["UI/UX Design", "User Research", "Prototyping"],
@@ -127,7 +127,7 @@ export const education = [
     id: 1,
     institution: "JAM INFO",
     degree: "Bachelor of Design",
-    field: "Graphic Design Traininf",
+    field: "Graphic Design Training",
     tags: ["Graphic Design", "Branding", "Visual Communication"],
   },
   {
