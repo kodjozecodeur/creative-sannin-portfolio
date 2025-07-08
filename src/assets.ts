@@ -33,10 +33,10 @@ export const texts = {
 export const projects = [
   {
     id: 1,
-    title: "SNB",
+    title: "DjamaEnPromo",
     description: "LifeStyle Application",
     preview:
-      "This is a mobile app that helps users easily find promotions on popular beverage brands (such as DJAMA, Warsteiner, C'Kool, CHAP) in bars across Togo.",
+      "This mobile application was designed for the German-Togolese brewing giant as part of a customer loyalty strategy through recurring promotional campaigns.It enables users to easily discover and access promotions on leading beverage brands — such as DJAMA, Warsteiner, C’Kool, and CHAP — available in bars across Togo",
     tags: ["Mobile App", "SNB", "LifeStyle"],
     imgSrc: ["/images/SNB1.jpg", "/images/SNB2.jpg", "/images/SNB3.jpg"],
     cta: "Take A look",
