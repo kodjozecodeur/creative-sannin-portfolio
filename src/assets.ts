@@ -129,6 +129,7 @@ export const education = [
     degree: "Bachelor of Design",
     field: "Graphic Design Training",
     tags: ["Graphic Design", "Branding", "Visual Communication"],
+    certificateLink: "https://credential.certifyme.online/verify/121c1c9f7648",
   },
   {
     id: 2,
@@ -136,6 +137,7 @@ export const education = [
     degree: "Online Training",
     field: "Product Design",
     tags: ["Product Design", "UX/UI Design", "Prototyping"],
+    certificateLink: "https://credential.certifyme.online/verify/1f0b2c9f7648",
   },
   {
     id: 3,
@@ -143,5 +145,7 @@ export const education = [
     degree: "Online Training",
     field: "Product Design",
     tags: ["UI/UX Design", "Prototyping", "User Testing"],
+    certificateLink:
+      "https://credsverse.com/credentials/5ddf824f-6e36-4cdc-a7f6-74c167560087",
   },
 ];

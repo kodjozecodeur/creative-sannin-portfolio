@@ -8,8 +8,8 @@ const AboutHero = () => {
           <p className="text-gray-600 text-lg mb-4">About</p>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
             I&apos;m <span className="text-black">Sitso</span>{" "}
-            <span className="text-red-500 font-normal">/si-tcho/</span>,<br />a{" "}
-            <span className="inline-block">Product Design</span> Alchemist,{" "}
+            <span className="text-[#F39319] font-normal">/si-tcho/</span>,<br />
+            a <span className="inline-block">Product Design</span> Alchemist,{" "}
             <span className="underline decoration-2 underline-offset-4">
               Frontend
             </span>{" "}

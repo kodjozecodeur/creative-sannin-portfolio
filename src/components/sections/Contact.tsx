@@ -29,7 +29,7 @@ export default function Contact() {
           <div className="flex flex-col sm:flex-row justify-center gap-6 pt-8">
             <a
               href="mailto:yayrakekeli06@gmail.com"
-              className="inline-flex items-center justify-center gap-3 bg-black text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-gray-800 transition-all duration-300 hover:scale-105 shadow-lg"
+              className="inline-flex items-center justify-center gap-3 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-[--highlight] hover:text-black transition-colors shadow-lg btn-highlight-solid bg-gray-900 dark:bg-[#F39319]"
             >
               <Mail className="w-5 h-5" />
               Send Message

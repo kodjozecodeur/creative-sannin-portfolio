@@ -1,11 +1,11 @@
 import React from "react";
 
 const RESUME_LINK =
-  "https://drive.google.com/file/d/1SkP1eBwCUnrLmXRZC0je0QEMQS4ZwvJG/view?usp=drive_link"; 
+  "https://drive.google.com/file/d/1SkP1eBwCUnrLmXRZC0je0QEMQS4ZwvJG/view?usp=drive_link";
 
 export default function ResumePage() {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-4 py-20">
+    <main className="flex flex-col items-center justify-center bg-gray-50 px-4 py-20 -mx-6 sm:-mx-8 lg:-mx-12 -mt-24 min-h-screen">
       <div className="max-w-xl w-full bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
         <h1 className="text-3xl font-bold mb-4 text-center">My Resume</h1>
         <p className="text-gray-600 mb-8 text-center">

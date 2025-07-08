@@ -1,8 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import Loader from "@/components/Loader";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
@@ -11,9 +9,7 @@ import Image from "next/image";
 
 export default function Header() {
   const [scrollY, setScrollY] = useState(0);
-  const [navLoading, setNavLoading] = useState(false);
   const pathname = usePathname();
-  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,7 +21,6 @@ export default function Header() {
 
   return (
     <>
-      {navLoading && <Loader />}
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           scrollY > 50
@@ -59,25 +54,17 @@ export default function Header() {
                 <Link
                   href="/"
                   className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium flex items-center gap-1"
-                  onClick={() => {
-                    setNavLoading(true);
-                  }}
                 >
                   <ArrowLeft size={18} aria-hidden="true" />
                   Home
                 </Link>
               ) : (
-                <button
+                <Link
+                  href="/about"
                   className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium"
-                  onClick={() => {
-                    setNavLoading(true);
-                    setTimeout(() => {
-                      router.push("/about");
-                    }, 400);
-                  }}
                 >
                   About <span className="italic">me</span> →
-                </button>
+                </Link>
               )}
               <ThemeToggle />
             </div>

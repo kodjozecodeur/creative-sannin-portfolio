@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
           Built By <Link href="https://kojocode.netlify.app/">KojoCode</Link>
         </span>
       </div>
-      <div>© 2025 Sitsofe- CreativeSannin</div>
+      <div>© 2025 Sitso- CreativeSannin</div>
     </footer>
   );
 };

@@ -7,7 +7,7 @@ import BreakSection from "./components/BreakSection";
 
 const AboutPage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="bg-gray-50 -mx-6 sm:-mx-8 lg:-mx-12 -mt-24">
       <AboutHero />
       <section className="pb-20 px-6">
         <div className="max-w-6xl mx-auto">

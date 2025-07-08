@@ -35,6 +35,7 @@ type Education = {
   description?: string;
   preview?: string;
   tags: string[];
+  certificateLink?: string;
 };
 
 // Animation variants for tab content
@@ -158,7 +159,7 @@ function ProjectCard({ project }: { project: Project }) {
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-gray-900 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors shadow-lg"
+            className="bg-gray-900 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-[--highlight] hover:text-black transition-colors shadow-lg btn-highlight-solid"
           >
             {project.cta}
           </a>
@@ -233,9 +234,19 @@ function ItemCard({
           </div>
         </div>
         {type === "project" && (
-          <button className="bg-gray-900 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-800 transition-all hover:scale-105 shadow-sm">
+          <button className="bg-gray-900 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-[--highlight] hover:text-black transition-all hover:scale-105 shadow-sm btn-highlight-solid">
             {(item as Project).cta}
           </button>
+        )}
+        {type === "education" && (item as Education).certificateLink && (
+          <a
+            href={(item as Education).certificateLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-gray-900 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-[--highlight] hover:text-black transition-colors hover:scale-105 shadow-sm btn-highlight-solid"
+          >
+            View Certificate
+          </a>
         )}
       </div>
 
@@ -276,19 +287,19 @@ export default function Projects() {
           <TabsList className="grid w-full max-w-xs sm:max-w-lg grid-cols-3 mb-8 sm:mb-16 bg-transparent p-0 h-auto mx-auto">
             <TabsTrigger
               value="projects"
-              className="text-base data-[state=active]:text-black data-[state=active]:font-semibold data-[state=active]:border-b-2 data-[state=active]:border-black data-[state=active]:bg-transparent data-[state=inactive]:text-gray-400 pb-3 rounded-none data-[state=active]:shadow-none transition-all duration-300"
+              className="text-base data-[state=active]:tab-highlight data-[state=active]:font-semibold data-[state=active]:border-b-2 data-[state=active]:border-[--highlight] data-[state=active]:bg-transparent data-[state=inactive]:text-gray-400 pb-3 rounded-none data-[state=active]:shadow-none transition-all duration-300"
             >
               Projects
             </TabsTrigger>
             <TabsTrigger
               value="experience"
-              className="text-base data-[state=active]:text-black data-[state=active]:font-semibold data-[state=active]:border-b-2 data-[state=active]:border-black data-[state=active]:bg-transparent data-[state=inactive]:text-gray-400 pb-3 rounded-none data-[state=active]:shadow-none transition-all duration-300"
+              className="text-base data-[state=active]:tab-highlight data-[state=active]:font-semibold data-[state=active]:border-b-2 data-[state=active]:border-[--highlight] data-[state=active]:bg-transparent data-[state=inactive]:text-gray-400 pb-3 rounded-none data-[state=active]:shadow-none transition-all duration-300"
             >
               Experience
             </TabsTrigger>
             <TabsTrigger
               value="education"
-              className="text-base data-[state=active]:text-black data-[state=active]:font-semibold data-[state=active]:border-b-2 data-[state=active]:border-black data-[state=active]:bg-transparent data-[state=inactive]:text-gray-400 pb-3 rounded-none data-[state=active]:shadow-none transition-all duration-300"
+              className="text-base data-[state=active]:tab-highlight data-[state=active]:font-semibold data-[state=active]:border-b-2 data-[state=active]:border-[--highlight] data-[state=active]:bg-transparent data-[state=inactive]:text-gray-400 pb-3 rounded-none data-[state=active]:shadow-none transition-all duration-300"
             >
               Education
             </TabsTrigger>
@@ -305,6 +316,16 @@ export default function Projects() {
               {projects.map((project) => (
                 <ProjectCard key={project.id} project={project} />
               ))}
+              <div className="flex justify-center pt-6">
+                <a
+                  href="https://www.behance.net/yayradesigner"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-3 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-[--highlight] hover:text-black transition-colors shadow-lg btn-highlight-solid bg-gray-900 dark:bg-[#F39319]"
+                >
+                  View More Projects
+                </a>
+              </div>
             </motion.div>
           </TabsContent>
 
@@ -319,6 +340,16 @@ export default function Projects() {
               {experience.map((exp) => (
                 <ItemCard key={exp.id} item={exp} type="experience" />
               ))}
+              <div className="flex justify-center pt-6">
+                <a
+                  href="https://drive.google.com/file/d/1SkP1eBwCUnrLmXRZC0je0QEMQS4ZwvJG/view?usp=drive_link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-3 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-[--highlight] hover:text-black transition-colors shadow-lg btn-highlight-solid bg-gray-900 dark:bg-[#F39319]"
+                >
+                  View More Experience
+                </a>
+              </div>
             </motion.div>
           </TabsContent>
 
